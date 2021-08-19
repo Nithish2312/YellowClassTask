@@ -104,9 +104,7 @@ class _MovieDialogState extends State<MovieDialog> {
         validator: (director) => director != null && director.isEmpty
             ? 'Enter the name of the director '
             : null,
-        // validator: (amount) => amount != null && double.tryParse(amount) == null
-        //     ? 'Enter a valid number'
-        //     : null,
+       
         controller: directorController,
       );
 
