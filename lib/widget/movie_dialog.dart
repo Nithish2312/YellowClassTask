@@ -24,8 +24,6 @@ class _MovieDialogState extends State<MovieDialog> {
   final nameController = TextEditingController();
   final directorController = TextEditingController();
 
-  // bool isExpense = true;
-
   @override
   void initState() {
     super.initState();
@@ -35,7 +33,6 @@ class _MovieDialogState extends State<MovieDialog> {
 
       nameController.text = transaction.name;
       directorController.text = transaction.director;
-      // isExpense = transaction.isExpense;
     }
   }
 
@@ -65,8 +62,6 @@ class _MovieDialogState extends State<MovieDialog> {
               SizedBox(height: 8),
               buildAmount(),
               SizedBox(height: 8),
-
-              // buildRadioButtons(),
             ],
           ),
         ),
@@ -115,23 +110,6 @@ class _MovieDialogState extends State<MovieDialog> {
         controller: directorController,
       );
 
-  // Widget buildRadioButtons() => Column(
-  //       children: [
-  //         RadioListTile<bool>(
-  //           title: Text('Expense'),
-  //           value: true,
-  //           groupValue: isExpense,
-  //           onChanged: (value) => setState(() => isExpense = value!),
-  //         ),
-  //         RadioListTile<bool>(
-  //           title: Text('Income'),
-  //           value: false,
-  //           groupValue: isExpense,
-  //           onChanged: (value) => setState(() => isExpense = value!),
-  //         ),
-  //       ],
-  //     );
-
   Widget buildCancelButton(BuildContext context) => TextButton(
         child: Text('Cancel'),
         onPressed: () => Navigator.of(context).pop(),
@@ -147,7 +125,7 @@ class _MovieDialogState extends State<MovieDialog> {
 
         if (isValid) {
           final name = nameController.text;
-          // final amount = double.tryParse(amountController.text) ?? 0;
+
           final director = directorController.text;
           widget.onClickedDone(
             name,

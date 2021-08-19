@@ -52,10 +52,6 @@ class _MoviePageState extends State<MoviePage> {
           Padding(
             padding: EdgeInsets.only(left: 20, top: 100),
             child: Image.asset("assets/nodata.jpg"),
-            // Text(
-            //   'No movies yet!',
-            //   style: TextStyle(fontSize: 24),
-            // ),
           ),
           SizedBox(height: 10),
           Padding(
@@ -66,26 +62,9 @@ class _MoviePageState extends State<MoviePage> {
         ],
       );
     } else {
-      // final netExpense = movies.fold<double>(
-      //   0,
-      //   (previousValue, transaction) => transaction.isExpense
-      //       ? previousValue - transaction.amount
-      //       : previousValue + transaction.amount,
-      // );
-      // final newExpenseString = '\$${netExpense.toStringAsFixed(2)}';
-      // final color = netExpense > 0 ? Colors.green : Colors.red;
-
       return Column(
         children: [
           SizedBox(height: 24),
-          // Text(
-          //   'Net Expense: $newExpenseString',
-          //   style: TextStyle(
-          //     fontWeight: FontWeight.bold,
-          //     fontSize: 20,
-          //     color: color,
-          //   ),
-          // ),
           SizedBox(height: 24),
           Expanded(
             child: ListView.builder(
@@ -107,9 +86,7 @@ class _MoviePageState extends State<MoviePage> {
     BuildContext context,
     Movie movie,
   ) {
-    // final color = movie.isExpense ? Colors.red : Colors.green;
     final date = DateFormat.yMMMd().format(movie.createdDate);
-    // final amount = '\$' + transaction.amount.toStringAsFixed(2);
 
     return Card(
       color: Colors.white,
@@ -159,13 +136,6 @@ class _MoviePageState extends State<MoviePage> {
             ),
           ],
         ),
-        // subtitle: Text(movie.name),
-        // trailing: Text(movie.name),
-        // trailing: Text(
-        //   amount,
-        //   style: TextStyle(
-        //       color: color, fontWeight: FontWeight.bold, fontSize: 16),
-        // ),
         children: [
           buildButtons(context, movie),
         ],
@@ -205,39 +175,23 @@ class _MoviePageState extends State<MoviePage> {
       ..name = name
       ..createdDate = DateTime.now()
       ..director = director;
-    // ..isExpense = isExpense;
 
     final box = Boxes.getMovies();
     box.add(movie);
-    //box.put('mykey', transaction);
-
-    // final mybox = Boxes.getTransactions();
-    // final myTransaction = mybox.get('key');
-    // mybox.values;
-    // mybox.keys;
   }
 
   void editMovie(
     Movie movie,
     String name,
     String director,
-    // bool isExpense,
   ) {
     movie.name = name;
     movie.director = director;
-    // director.isExpense = isExpense;
-
-    // final box = Boxes.getTransactions();
-    // box.put(transaction.key, transaction);
 
     movie.save();
   }
 
   void deleteMovie(Movie movie) {
-    // final box = Boxes.getTransactions();
-    // box.delete(transaction.key);
-
     movie.delete();
-    //setState(() => transactions.remove(transaction));
   }
 }
